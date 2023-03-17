@@ -1,0 +1,24 @@
+{
+	"quantity": 2,
+	"cost": 275.99,
+	"section": "Section 4",
+	"row": "3",
+	"seat_from": "2",
+	"seat_thru": "3",
+	"notes": "New notes",
+	"in_hand_date": "2018-03-14",
+	"is_edelivery": true,
+	"is_instant": true,
+	"split_type": "DONTLEAVEONE",
+	"tokens_type": "barcode",
+	"tokens": [
+		{
+			"seat": 2,
+			"token": "def456"
+		},
+		{
+			"seat": 3,
+			"token": "ghi789"
+		}
+	]
+}

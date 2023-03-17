@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</Console>
+		<RollingRandomAccessFile name="file"
+			fileName="target/seatgeek-client-rescu.log"
+			filePattern="target/seatgeek-client-rescu-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout charset="UTF-8">
+				<Pattern>%d %-6p [%t] %C{1.}.%M:%L %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<OnStartupTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="7" />
+		</RollingRandomAccessFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="si.mazi.rescu" level="ALL" additivity="false">
+			<AppenderRef ref="file" />
+		</Logger>
+		<Logger name="org.oxerr.seatgeek" level="ALL" additivity="false">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</Logger>
+		<Root level="WARN">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</Root>
+	</Loggers>
+</Configuration>

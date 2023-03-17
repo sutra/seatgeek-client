@@ -1,0 +1,35 @@
+{
+	"event": "Justin Timberlake",
+	"venue": "Madison Square Garden",
+	"event_date": "2018-03-21",
+	"event_time": "20:00:00",
+	"quantity": 3,
+	"cost": 150.99,
+	"section": "110",
+	"row": "10",
+	"seat_from": 1,
+	"seat_thru": 3,
+	"notes": "Some notes",
+	"in_hand_date": "2018-01-01",
+	"is_edelivery": true,
+	"is_instant": true,
+	"split_type": "CUSTOM",
+	"splits": "1,2,3",
+	"seller_previously_paid_price_per_ticket": 0.50,
+	"stock_type": "mobile",
+	"tokens_type": "barcode",
+	"tokens": [
+		{
+			"seat": 1,
+			"token": "abc123"
+		},
+		{
+			"seat": 2,
+			"token": "def456"
+		},
+		{
+			"seat": 3,
+			"token": "ghi789"
+		}
+	]
+}

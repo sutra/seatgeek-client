@@ -1,0 +1,5 @@
+target/
+.project
+.classpath
+.settings/
+/seatgeek-client-rescu/src/test/resources/seatgeek.properties

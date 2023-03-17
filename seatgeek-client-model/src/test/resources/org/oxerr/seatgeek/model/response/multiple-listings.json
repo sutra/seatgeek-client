@@ -1,0 +1,68 @@
+{
+	"listings": [
+		{
+			"ticket_id": "abc123",
+			"event_id": 5660418,
+			"event": "Justin Timberlake",
+			"venue": "Madison Square Garden",
+			"event_date": "2018-03-21",
+			"event_time": "20:00:00",
+			"quantity": 2,
+			"cost": 275.99,
+			"section": "110",
+			"row": "10",
+			"seat_from": 1,
+			"seat_thru": 2,
+			"notes": "Some notes",
+			"in_hand_date": "2018-03-14",
+			"is_edelivery": true,
+			"is_instant": true,
+			"split_type": "DONTLEAVEONE",
+			"splits": "2",
+			"seller_previously_paid_price_per_ticket": 1.40,
+			"barcodes": [
+				{
+					"seat": 2,
+					"barcode": "abc123"
+				},
+				{
+					"seat": 3,
+					"barcode": "def456"
+				}
+			]
+		},
+		{
+			"ticket_id": "def456",
+			"event_id": 6760419,
+			"event": "Justin Timberlake",
+			"venue": "Madison Square Garden",
+			"event_date": "2018-03-21",
+			"event_time": "20:00:00",
+			"quantity": 1,
+			"cost": 175.99,
+			"section": "110",
+			"row": "12",
+			"seat_from": 3,
+			"seat_thru": 3,
+			"notes": "Some more notes",
+			"in_hand_date": "2018-03-14",
+			"is_edelivery": true,
+			"is_instant": true,
+			"split_type": "ANY",
+			"splits": "1",
+			"seller_previously_paid_price_per_ticket": null,
+			"barcodes": [
+				{
+					"seat": 3,
+					"barcode": "ghi789"
+				}
+			]
+		}
+	],
+	"meta": {
+		"page": 1,
+		"per_page": 500,
+		"total": 4119,
+		"status": 200
+	}
+}
