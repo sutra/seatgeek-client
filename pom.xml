@@ -28,6 +28,7 @@
 	<modules>
 		<module>seatgeek-client-model</module>
 		<module>seatgeek-client-core</module>
+		<module>seatgeek-client-cached</module>
 		<module>seatgeek-client-rescu</module>
 		<module>seatgeek-client-coverage</module>
 	</modules>
@@ -90,6 +91,11 @@
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
 				<version>5.9.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>3.19.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
