@@ -1,10 +1,14 @@
 package org.oxerr.seatgeek.client.cached.model;
 
+import java.io.Serializable;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
 
-public class Listing {
+public class Listing implements Serializable {
+
+	private static final long serialVersionUID = 2023031901L;
 
 	private String ticketId;
 

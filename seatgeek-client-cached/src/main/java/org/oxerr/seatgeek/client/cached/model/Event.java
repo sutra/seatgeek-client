@@ -1,5 +1,6 @@
 package org.oxerr.seatgeek.client.cached.model;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class Event {
+public class Event implements Serializable {
+
+	private static final long serialVersionUID = 2023031901L;
 
 	private String id;
 
