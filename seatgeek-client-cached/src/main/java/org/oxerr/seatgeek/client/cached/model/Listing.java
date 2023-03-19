@@ -10,6 +10,14 @@ public class Listing {
 
 	private CreateListingRequest request;
 
+	public Listing() {
+	}
+
+	public Listing(String ticketId, CreateListingRequest request) {
+		this.ticketId = ticketId;
+		this.request = request;
+	}
+
 	public String getTicketId() {
 		return ticketId;
 	}

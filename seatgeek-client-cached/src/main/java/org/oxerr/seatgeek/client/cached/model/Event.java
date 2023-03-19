@@ -1,6 +1,7 @@
 package org.oxerr.seatgeek.client.cached.model;
 
 import java.time.Instant;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -13,6 +14,20 @@ public class Event {
 	private Instant eventDate;
 
 	private List<Listing> listings;
+
+	public Event() {
+		this(null, null, Collections.emptyList());
+	}
+
+	public Event(String id, Instant eventDate) {
+		this(id, eventDate, Collections.emptyList());
+	}
+
+	public Event(String id, Instant eventDate, List<Listing> listings) {
+		this.id = id;
+		this.eventDate = eventDate;
+		this.listings = listings;
+	}
 
 	public String getId() {
 		return id;
