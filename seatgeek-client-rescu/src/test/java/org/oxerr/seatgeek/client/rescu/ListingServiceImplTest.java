@@ -46,7 +46,7 @@ class ListingServiceImplTest {
 		r.setNotes("Some notes");
 		r.setInHandDate(LocalDate.of(2018, 1, 1));
 		r.setEdelivery(true);
-		r.setInstant(true);
+		r.setInstant(false);
 		r.setSplitType(SplitType.ANY);
 		r.setSplits("1,2,3");
 		r.setSellerPreviouslyPaidPricePerTicket(new BigDecimal("0.50"));
@@ -67,6 +67,7 @@ class ListingServiceImplTest {
 		// Get again
 		listing = this.listingService.getListing(ticketId);
 		assertEquals(2, listing.getQuantity().intValue());
+		assertEquals(Boolean.FALSE, listing.getInstant());
 
 		// Get multiple listings
 		/*
