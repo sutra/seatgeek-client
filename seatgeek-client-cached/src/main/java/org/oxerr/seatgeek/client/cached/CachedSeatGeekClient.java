@@ -5,6 +5,8 @@ import org.redisson.api.RedissonClient;
 
 public class CachedSeatGeekClient {
 
+	private final SeatGeekClient seatGeekClient;
+
 	private final CachedListingService cachedListingService;
 
 	public CachedSeatGeekClient(
@@ -12,11 +14,16 @@ public class CachedSeatGeekClient {
 		RedissonClient redissonClient,
 		String keyPrefix
 	) {
+		this.seatGeekClient = seatGeekClient;
 		this.cachedListingService = new CachedListingService(
 			seatGeekClient.getListingService(),
 			redissonClient,
 			keyPrefix
 		);
+	}
+
+	public SeatGeekClient getClient() {
+		return this.seatGeekClient;
 	}
 
 	public CachedListingService getCachedListingService() {
