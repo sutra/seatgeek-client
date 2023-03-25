@@ -2,6 +2,7 @@ package org.oxerr.seatgeek.model.response;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
 
 public class Listing extends CreateListingRequest {
@@ -49,6 +50,11 @@ public class Listing extends CreateListingRequest {
 		}
 		Listing rhs = (Listing) obj;
 		return EqualsBuilder.reflectionEquals(this, rhs);
+	}
+
+	@Override
+	public String toString() {
+		return this.ticketId;
 	}
 
 }

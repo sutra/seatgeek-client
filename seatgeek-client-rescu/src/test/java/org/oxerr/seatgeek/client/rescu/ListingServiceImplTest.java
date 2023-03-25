@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.oxerr.seatgeek.client.ListingService;
@@ -22,6 +24,8 @@ import org.oxerr.seatgeek.model.response.Listing;
 import org.oxerr.seatgeek.model.response.MultipleListingsResponse;
 
 class ListingServiceImplTest {
+
+	private final Logger log = LogManager.getLogger();
 
 	private final SeatGeekClient client = RescuSeatGeekClientTest.getClient();
 
@@ -122,6 +126,7 @@ class ListingServiceImplTest {
 		Boolean onlyBarcode = null;
 
 		MultipleListingsResponse response = this.listingService.getListings(page, perPage, onlyBarcode);
+		log.info("response: {}", response);
 		assertEquals(0, response.getListings().size());
 		assertEquals(1, response.getMeta().getPage().intValue());
 		assertEquals(200, response.getMeta().getPerPage().intValue());
