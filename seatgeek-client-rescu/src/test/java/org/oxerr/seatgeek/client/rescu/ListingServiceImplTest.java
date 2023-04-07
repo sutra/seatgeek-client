@@ -61,7 +61,7 @@ class ListingServiceImplTest {
 		this.listingService.createListing(ticketId, r);
 
 		// Get
-		Listing listing = this.listingService.getListing(ticketId);
+		Listing listing = this.listingService.getListing(ticketId).get();
 		assertEquals(3, listing.getQuantity().intValue());
 
 		// Update via create API
@@ -69,7 +69,7 @@ class ListingServiceImplTest {
 		this.listingService.createListing(ticketId, r);
 
 		// Get again
-		listing = this.listingService.getListing(ticketId);
+		listing = this.listingService.getListing(ticketId).get();
 		assertEquals(2, listing.getQuantity().intValue());
 		assertEquals(Boolean.FALSE, listing.getInstant());
 
@@ -95,7 +95,7 @@ class ListingServiceImplTest {
 		// Delete again
 		this.listingService.deleteListing(ticketId);
 
-		listing = this.listingService.getListing(ticketId);
+		listing = this.listingService.getListing(ticketId).get();
 		assertNull(listing);
 	}
 
@@ -114,7 +114,7 @@ class ListingServiceImplTest {
 	@Disabled("Token is required")
 	void testGetListing() throws IOException {
 		String ticketId = "1";
-		Listing listing = this.listingService.getListing(ticketId);
+		Listing listing = this.listingService.getListing(ticketId).get();
 		assertNull(listing);
 	}
 

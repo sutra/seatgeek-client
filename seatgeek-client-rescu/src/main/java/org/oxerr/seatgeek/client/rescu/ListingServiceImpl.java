@@ -1,6 +1,7 @@
 package org.oxerr.seatgeek.client.rescu;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.oxerr.seatgeek.client.ListingService;
@@ -35,12 +36,12 @@ public class ListingServiceImpl implements ListingService {
 	}
 
 	@Override
-	public Listing getListing(String ticketId) throws IOException {
+	public Optional<Listing> getListing(String ticketId) throws IOException {
 		try {
-			return this.listingResource.getListing(ticketId).getListing();
+			return Optional.ofNullable(this.listingResource.getListing(ticketId).getListing());
 		} catch (HttpStatusIOException e) {
 			if (e.getHttpStatusCode() == 404) {
-				return null;
+				return Optional.empty();
 			} else {
 				throw e;
 			}
