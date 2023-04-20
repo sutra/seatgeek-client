@@ -24,7 +24,7 @@ public class RescuSeatGeekClientTest {
 				LOG.warn("No resource found: {}", name);
 			}
 		} catch (IOException e) {
-			throw new java.lang.IllegalArgumentException("Read /seatgeek.properties failed.");
+			throw new java.lang.IllegalArgumentException("Read " + name + " failed.");
 		}
 
 		String token = props.getProperty("token");
