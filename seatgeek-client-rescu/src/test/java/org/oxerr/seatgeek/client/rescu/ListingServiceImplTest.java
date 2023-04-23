@@ -127,10 +127,10 @@ class ListingServiceImplTest {
 
 		MultipleListingsResponse response = this.listingService.getListings(page, perPage, onlyBarcode);
 		log.info("response: {}", response);
-		assertEquals(0, response.getListings().size());
+		assertEquals(200, response.getListings().size());
 		assertEquals(1, response.getMeta().getPage().intValue());
 		assertEquals(200, response.getMeta().getPerPage().intValue());
-		assertEquals(0L, response.getMeta().getTotal().longValue());
+		assertEquals(1278205L, response.getMeta().getTotal().longValue());
 		assertEquals(200, response.getMeta().getStatus().intValue());
 	}
 

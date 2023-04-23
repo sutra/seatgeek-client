@@ -3,6 +3,8 @@ package org.oxerr.seatgeek.client.rescu;
 import java.io.IOException;
 import java.util.Optional;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.oxerr.seatgeek.client.ListingService;
 import org.oxerr.seatgeek.model.SeatGeekException;
@@ -55,10 +57,10 @@ public class ListingServiceImpl implements ListingService {
 		Boolean onlyBarcode,
 		String... listingIds
 	) throws IOException {
-		String commaSeperatedListingIds = StringUtils.join(listingIds, ',');
+		String commaSeperatedListingIds = ArrayUtils.getLength(listingIds) == 0 ? null : StringUtils.join(listingIds, ',');
 		return this.listingResource.getListings(
 			commaSeperatedListingIds,
-			onlyBarcode != null && onlyBarcode.booleanValue() ? 1 : 0,
+			BooleanUtils.toIntegerObject(onlyBarcode),
 			page,
 			perPage
 		);
