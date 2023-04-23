@@ -42,8 +42,6 @@ public interface ListingResource {
 
 	@GET
 	@Path("/listings/single/{ticket_id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	SingleListingResponse getListing(
 		@PathParam("ticket_id") String ticketId
 	) throws IOException;
@@ -60,8 +58,6 @@ public interface ListingResource {
 	 */
 	@GET
 	@Path("/listings")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	MultipleListingsResponse getListings(
 		@QueryParam("listing_ids") String listingIds,
 		@QueryParam("only_barcode") Integer onlyBarcode,
