@@ -1,5 +1,7 @@
 package org.oxerr.seatgeek.client.rescu;
 
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+
 import java.io.IOException;
 import java.util.Optional;
 
@@ -42,7 +44,7 @@ public class ListingServiceImpl implements ListingService {
 		try {
 			return Optional.ofNullable(this.listingResource.getListing(ticketId).getListing());
 		} catch (HttpStatusIOException e) {
-			if (e.getHttpStatusCode() == 404) {
+			if (e.getHttpStatusCode() == NOT_FOUND.getStatusCode()) {
 				return Optional.empty();
 			} else {
 				throw e;
@@ -71,7 +73,7 @@ public class ListingServiceImpl implements ListingService {
 		try {
 			this.listingResource.deleteListing(ticketId);
 		} catch (HttpStatusIOException e) {
-			if (e.getHttpStatusCode() != 404) {
+			if (e.getHttpStatusCode() != NOT_FOUND.getStatusCode()) {
 				throw e;
 			}
 		}
