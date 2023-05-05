@@ -25,13 +25,15 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 
 	private final IRestProxyFactory restProxyFactory;
 
+	private final RateLimitInterceptor rateLimitInterceptor;
+
 	private final ListingService listingService;
 
-	public RescuSeatGeekClient(String token) {
-		this("https://sellerdirect-api.seatgeek.com", token);
+	public RescuSeatGeekClient(String token, RateLimiter rateLimiter) {
+		this("https://sellerdirect-api.seatgeek.com", token, rateLimiter);
 	}
 
-	public RescuSeatGeekClient(String baseUrl, String token) {
+	public RescuSeatGeekClient(String baseUrl, String token, RateLimiter rateLimiter) {
 		this.baseUrl = baseUrl;
 
 		JacksonObjectMapperFactory jacksonObjectMapperFactory = new DefaultJacksonObjectMapperFactory() {
@@ -58,6 +60,7 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 		clientConfig.setJacksonObjectMapperFactory(jacksonObjectMapperFactory);
 
 		this.restProxyFactory = new RestProxyFactorySingletonImpl();
+		this.rateLimitInterceptor = new RateLimitInterceptor(rateLimiter);
 
 		this.listingService = new ListingServiceImpl(createProxy(ListingResource.class));
 	}
@@ -68,7 +71,7 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 	}
 
 	protected <I> I createProxy(Class<I> restInterface) {
-		return this.restProxyFactory.createProxy(restInterface, baseUrl, this.clientConfig);
+		return this.restProxyFactory.createProxy(restInterface, baseUrl, this.clientConfig, this.rateLimitInterceptor);
 	}
 
 }

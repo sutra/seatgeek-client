@@ -28,7 +28,14 @@ public class RescuSeatGeekClientTest {
 		}
 
 		String token = props.getProperty("token");
-		return new RescuSeatGeekClient(token);
+		RateLimiter rateLimiter = new RateLimiter() {
+
+			@Override
+			public void acquire() {
+			}
+
+		};
+		return new RescuSeatGeekClient(token, rateLimiter);
 	}
 
 	@Test
