@@ -39,6 +39,10 @@
 			<artifactId>junit-jupiter-api</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.oxerr.rescu</groupId>
+			<artifactId>rescu-ext-singleton</artifactId>
+		</dependency>
 
 		<!-- Java 8 Date/time -->
 		<dependency>
