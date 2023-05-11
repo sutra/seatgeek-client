@@ -2,6 +2,8 @@ package org.oxerr.seatgeek.client.rescu;
 
 import javax.ws.rs.HeaderParam;
 
+import org.oxerr.rescu.ext.ratelimiter.RateLimitInterceptor;
+import org.oxerr.rescu.ext.ratelimiter.RateLimiter;
 import org.oxerr.rescu.ext.singleton.RestProxyFactorySingletonImpl;
 import org.oxerr.seatgeek.client.ListingService;
 import org.oxerr.seatgeek.client.SeatGeekClient;
