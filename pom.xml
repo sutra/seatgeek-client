@@ -95,12 +95,12 @@
 			<dependency>
 				<groupId>org.oxerr.rescu</groupId>
 				<artifactId>rescu-ext-singleton</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>0.0.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.oxerr.rescu</groupId>
 				<artifactId>rescu-ext-rate-limiter-core</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>0.0.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.redisson</groupId>
