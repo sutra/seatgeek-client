@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.oxerr</groupId>
 		<artifactId>oxerr-parent</artifactId>
-		<version>1.6.0</version>
+		<version>1.6.2</version>
 	</parent>
 	<groupId>org.oxerr.seatgeek</groupId>
 	<artifactId>seatgeek-client</artifactId>
@@ -18,7 +18,7 @@
 		SeatGeek Client - SeatGeek SellerDirect API Client Library for Java.
 	</description>
 	<packaging>pom</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<url>https://www.oxerr.org/seatgeek-client</url>
 	<inceptionYear>2023</inceptionYear>
 	<properties>
@@ -28,6 +28,7 @@
 	<modules>
 		<module>seatgeek-client-model</module>
 		<module>seatgeek-client-core</module>
+		<module>seatgeek-client-cached</module>
 		<module>seatgeek-client-rescu</module>
 		<module>seatgeek-client-coverage</module>
 	</modules>
@@ -90,6 +91,21 @@
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-api</artifactId>
 				<version>5.9.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.oxerr.rescu</groupId>
+				<artifactId>rescu-ext-singleton</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.oxerr.rescu</groupId>
+				<artifactId>rescu-ext-rate-limiter-core</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson</artifactId>
+				<version>3.19.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>

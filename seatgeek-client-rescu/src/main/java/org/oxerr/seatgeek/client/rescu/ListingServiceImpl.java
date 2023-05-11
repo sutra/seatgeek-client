@@ -1,7 +1,12 @@
 package org.oxerr.seatgeek.client.rescu;
 
-import java.io.IOException;
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+import java.io.IOException;
+import java.util.Optional;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.oxerr.seatgeek.client.ListingService;
 import org.oxerr.seatgeek.model.SeatGeekException;
@@ -35,12 +40,12 @@ public class ListingServiceImpl implements ListingService {
 	}
 
 	@Override
-	public Listing getListing(String ticketId) throws IOException {
+	public Optional<Listing> getListing(String ticketId) throws IOException {
 		try {
-			return this.listingResource.getListing(ticketId).getListing();
+			return Optional.ofNullable(this.listingResource.getListing(ticketId).getListing());
 		} catch (HttpStatusIOException e) {
-			if (e.getHttpStatusCode() == 404) {
-				return null;
+			if (e.getHttpStatusCode() == NOT_FOUND.getStatusCode()) {
+				return Optional.empty();
 			} else {
 				throw e;
 			}
@@ -54,10 +59,10 @@ public class ListingServiceImpl implements ListingService {
 		Boolean onlyBarcode,
 		String... listingIds
 	) throws IOException {
-		String commaSeperatedListingIds = StringUtils.join(listingIds, ',');
+		String commaSeperatedListingIds = ArrayUtils.getLength(listingIds) == 0 ? null : StringUtils.join(listingIds, ',');
 		return this.listingResource.getListings(
 			commaSeperatedListingIds,
-			onlyBarcode != null && onlyBarcode.booleanValue() ? 1 : 0,
+			BooleanUtils.toIntegerObject(onlyBarcode),
 			page,
 			perPage
 		);
@@ -68,7 +73,7 @@ public class ListingServiceImpl implements ListingService {
 		try {
 			this.listingResource.deleteListing(ticketId);
 		} catch (HttpStatusIOException e) {
-			if (e.getHttpStatusCode() != 404) {
+			if (e.getHttpStatusCode() != NOT_FOUND.getStatusCode()) {
 				throw e;
 			}
 		}

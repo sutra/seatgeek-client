@@ -1,6 +1,7 @@
 package org.oxerr.seatgeek.client;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
 import org.oxerr.seatgeek.model.request.UpdateListingRequest;
@@ -15,7 +16,7 @@ public interface ListingService {
 	UpdateListingRequest updateListing(String ticketId, UpdateListingRequest r)
 		throws IOException;
 
-	Listing getListing(String ticketId) throws IOException;
+	Optional<Listing> getListing(String ticketId) throws IOException;
 
 	MultipleListingsResponse getListings(
 		Integer page,

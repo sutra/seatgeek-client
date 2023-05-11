@@ -6,7 +6,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
-import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -43,8 +42,6 @@ public interface ListingResource {
 
 	@GET
 	@Path("/listings/single/{ticket_id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	SingleListingResponse getListing(
 		@PathParam("ticket_id") String ticketId
 	) throws IOException;
@@ -61,8 +58,6 @@ public interface ListingResource {
 	 */
 	@GET
 	@Path("/listings")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	MultipleListingsResponse getListings(
 		@QueryParam("listing_ids") String listingIds,
 		@QueryParam("only_barcode") Integer onlyBarcode,

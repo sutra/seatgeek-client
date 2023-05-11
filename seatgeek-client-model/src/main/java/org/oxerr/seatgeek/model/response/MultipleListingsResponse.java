@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class MultipleListingsResponse extends Response implements Serializable {
 
@@ -38,6 +39,11 @@ public class MultipleListingsResponse extends Response implements Serializable {
 		}
 		MultipleListingsResponse rhs = (MultipleListingsResponse) obj;
 		return EqualsBuilder.reflectionEquals(this, rhs);
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

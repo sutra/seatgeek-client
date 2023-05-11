@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.oxerr.seatgeek.client.ListingService;
@@ -22,6 +24,8 @@ import org.oxerr.seatgeek.model.response.Listing;
 import org.oxerr.seatgeek.model.response.MultipleListingsResponse;
 
 class ListingServiceImplTest {
+
+	private final Logger log = LogManager.getLogger();
 
 	private final SeatGeekClient client = RescuSeatGeekClientTest.getClient();
 
@@ -46,7 +50,7 @@ class ListingServiceImplTest {
 		r.setNotes("Some notes");
 		r.setInHandDate(LocalDate.of(2018, 1, 1));
 		r.setEdelivery(true);
-		r.setInstant(true);
+		r.setInstant(false);
 		r.setSplitType(SplitType.ANY);
 		r.setSplits("1,2,3");
 		r.setSellerPreviouslyPaidPricePerTicket(new BigDecimal("0.50"));
@@ -57,7 +61,7 @@ class ListingServiceImplTest {
 		this.listingService.createListing(ticketId, r);
 
 		// Get
-		Listing listing = this.listingService.getListing(ticketId);
+		Listing listing = this.listingService.getListing(ticketId).get();
 		assertEquals(3, listing.getQuantity().intValue());
 
 		// Update via create API
@@ -65,8 +69,9 @@ class ListingServiceImplTest {
 		this.listingService.createListing(ticketId, r);
 
 		// Get again
-		listing = this.listingService.getListing(ticketId);
+		listing = this.listingService.getListing(ticketId).get();
 		assertEquals(2, listing.getQuantity().intValue());
+		assertEquals(Boolean.FALSE, listing.getInstant());
 
 		// Get multiple listings
 		/*
@@ -90,7 +95,7 @@ class ListingServiceImplTest {
 		// Delete again
 		this.listingService.deleteListing(ticketId);
 
-		listing = this.listingService.getListing(ticketId);
+		listing = this.listingService.getListing(ticketId).get();
 		assertNull(listing);
 	}
 
@@ -109,7 +114,7 @@ class ListingServiceImplTest {
 	@Disabled("Token is required")
 	void testGetListing() throws IOException {
 		String ticketId = "1";
-		Listing listing = this.listingService.getListing(ticketId);
+		Listing listing = this.listingService.getListing(ticketId).get();
 		assertNull(listing);
 	}
 
@@ -121,10 +126,11 @@ class ListingServiceImplTest {
 		Boolean onlyBarcode = null;
 
 		MultipleListingsResponse response = this.listingService.getListings(page, perPage, onlyBarcode);
-		assertEquals(0, response.getListings().size());
+		log.info("response: {}", response);
+		assertEquals(200, response.getListings().size());
 		assertEquals(1, response.getMeta().getPage().intValue());
 		assertEquals(200, response.getMeta().getPerPage().intValue());
-		assertEquals(0L, response.getMeta().getTotal().longValue());
+		assertEquals(1278205L, response.getMeta().getTotal().longValue());
 		assertEquals(200, response.getMeta().getStatus().intValue());
 	}
 

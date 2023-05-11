@@ -1,20 +1,26 @@
-package org.oxerr.seatgeek.model.response;
+package org.oxerr.seatgeek.client.cached.model;
+
+import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
 
-public class Listing extends CreateListingRequest {
+public class Listing implements Serializable {
 
-	private static final long serialVersionUID = 20230315L;
+	private static final long serialVersionUID = 2023031901L;
 
-	/**
-	 * An identifier for this listing that is unique to your account.
-	 */
 	private String ticketId;
 
-	private Long eventId;
+	private CreateListingRequest request;
+
+	public Listing() {
+	}
+
+	public Listing(String ticketId, CreateListingRequest request) {
+		this.ticketId = ticketId;
+		this.request = request;
+	}
 
 	public String getTicketId() {
 		return ticketId;
@@ -24,12 +30,12 @@ public class Listing extends CreateListingRequest {
 		this.ticketId = ticketId;
 	}
 
-	public Long getEventId() {
-		return eventId;
+	public CreateListingRequest getRequest() {
+		return request;
 	}
 
-	public void setEventId(Long eventId) {
-		this.eventId = eventId;
+	public void setRequest(CreateListingRequest request) {
+		this.request = request;
 	}
 
 	@Override
@@ -50,11 +56,6 @@ public class Listing extends CreateListingRequest {
 		}
 		Listing rhs = (Listing) obj;
 		return EqualsBuilder.reflectionEquals(this, rhs);
-	}
-
-	@Override
-	public String toString() {
-		return this.ticketId;
 	}
 
 }
