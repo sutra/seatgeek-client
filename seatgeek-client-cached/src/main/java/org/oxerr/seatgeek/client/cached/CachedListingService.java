@@ -18,10 +18,7 @@ import org.oxerr.seatgeek.client.cached.model.CachedListing;
 import org.oxerr.seatgeek.client.cached.model.Event;
 import org.oxerr.seatgeek.client.cached.model.Listing;
 import org.redisson.api.RMapCache;
-import org.redisson.api.RRateLimiter;
 import org.redisson.api.RReadWriteLock;
-import org.redisson.api.RateIntervalUnit;
-import org.redisson.api.RateType;
 import org.redisson.api.RedissonClient;
 
 public class CachedListingService {
@@ -40,8 +37,6 @@ public class CachedListingService {
 	// Event ID -> <Ticket ID, CachedListing>
 	private final RMapCache<String, Map<String, CachedListing>> listingsCache;
 
-	private final RRateLimiter newListingLimiter;
-
 	public CachedListingService(
 		ListingService listingService,
 		RedissonClient redisson,
@@ -53,13 +48,6 @@ public class CachedListingService {
 
 		String cacheName = String.format("%s:listings", keyPrefix);
 		this.listingsCache = redisson.getMapCache(cacheName);
-
-		String limiterName = String.format("%s:newListingLimiter", keyPrefix);
-		this.newListingLimiter = redisson.getRateLimiter(limiterName);
-
-		// Initialization required only once.
-		// 50 permits per 1 second
-		this.newListingLimiter.trySetRate(RateType.OVERALL, 50, 1, RateIntervalUnit.SECONDS);
 	}
 
 	public RMapCache<String, Map<String, CachedListing>> getListingCache() {
@@ -140,7 +128,6 @@ public class CachedListingService {
 			log.trace("Creating {}", listing.getTicketId());
 
 			try {
-				this.newListingLimiter.acquire();
 				this.listingService.createListing(listing.getTicketId(), listing.getRequest());
 				cache.put(listing.getTicketId(), CachedListing.listed(listing));
 			} catch (IOException e) {
