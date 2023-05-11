@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.oxerr.seatgeek</groupId>
 		<artifactId>seatgeek-client</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>seatgeek-client-cached</artifactId>
 	<name>SeatGeek Client - Cached</name>
