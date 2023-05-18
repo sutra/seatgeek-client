@@ -1,7 +1,5 @@
 package org.oxerr.seatgeek.client.rescu;
 
-import javax.ws.rs.HeaderParam;
-
 import org.oxerr.rescu.ext.ratelimiter.RateLimitInterceptor;
 import org.oxerr.rescu.ext.ratelimiter.RateLimiter;
 import org.oxerr.rescu.ext.singleton.RestProxyFactorySingletonImpl;
@@ -15,6 +13,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
+import jakarta.ws.rs.HeaderParam;
 import si.mazi.rescu.ClientConfig;
 import si.mazi.rescu.IRestProxyFactory;
 import si.mazi.rescu.RestProxyFactoryImpl;
