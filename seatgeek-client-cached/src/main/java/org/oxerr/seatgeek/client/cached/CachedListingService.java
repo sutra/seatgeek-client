@@ -6,4 +6,8 @@ public interface CachedListingService {
 
 	void updateEvent(Event event);
 
+	long cacheSize();
+
+	long listedCount();
+
 }

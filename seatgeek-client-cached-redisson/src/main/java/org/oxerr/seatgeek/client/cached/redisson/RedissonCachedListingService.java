@@ -18,6 +18,7 @@ import org.oxerr.seatgeek.client.cached.CachedListingService;
 import org.oxerr.seatgeek.client.cached.model.CachedListing;
 import org.oxerr.seatgeek.client.cached.model.Event;
 import org.oxerr.seatgeek.client.cached.model.Listing;
+import org.oxerr.seatgeek.client.cached.model.Status;
 import org.redisson.api.RMapCache;
 import org.redisson.api.RReadWriteLock;
 import org.redisson.api.RedissonClient;
@@ -149,6 +150,23 @@ public class RedissonCachedListingService implements CachedListingService {
 
 	private long ttl(Event event) {
 		return Math.max(1, Duration.between(Instant.now(), event.getEventDate()).toMinutes());
+	}
+
+	@Override
+	public long cacheSize() {
+		return this.getListingCache().size();
+	}
+
+	@Override
+	public long listedCount() {
+		return countListings(this.getListingCache());
+	}
+
+	static long countListings(RMapCache<String, Map<String, CachedListing>> listingsCache) {
+		return listingsCache.values()
+			.stream()
+			.map((Map<String, CachedListing> listings) -> listings.values().stream().filter(l -> l.getStatus() == Status.LISTED).count())
+			.reduce(0L, Long::sum);
 	}
 
 }
