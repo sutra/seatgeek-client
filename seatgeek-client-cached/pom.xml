@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.oxerr.seatgeek</groupId>
 		<artifactId>seatgeek-client</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5</version>
 	</parent>
 	<artifactId>seatgeek-client-cached</artifactId>
 	<name>SeatGeek Client - Cached</name>
@@ -19,16 +19,8 @@
 			<artifactId>log4j-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.redisson</groupId>
-			<artifactId>redisson</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.mmazi</groupId>
-			<artifactId>rescu</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>seatgeek-client-core</artifactId>
+			<artifactId>seatgeek-client-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
