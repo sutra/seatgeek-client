@@ -20,7 +20,7 @@
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>seatgeek-client-model</artifactId>
+			<artifactId>seatgeek-client-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
