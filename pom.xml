@@ -29,6 +29,7 @@
 		<module>seatgeek-client-model</module>
 		<module>seatgeek-client-core</module>
 		<module>seatgeek-client-cached</module>
+		<module>seatgeek-client-cached-redisson</module>
 		<module>seatgeek-client-rescu</module>
 		<module>seatgeek-client-coverage</module>
 	</modules>
