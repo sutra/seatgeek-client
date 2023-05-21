@@ -90,7 +90,7 @@ public class RedissonCachedListingService implements CachedListingService {
 	private void delete(Event event, Map<String, CachedListing> cache) {
 		Set<String> inventoryTicketIds = event.getListings()
 			.stream()
-			.map(Listing::getTicketId)
+			.map(Listing::getId)
 			.collect(Collectors.toSet());
 
 		Set<String> pendingDeleteTicketIds = cache.keySet()
@@ -113,12 +113,12 @@ public class RedissonCachedListingService implements CachedListingService {
 	private void create(Event event, Map<String, CachedListing> cache) {
 		List<Listing> pendingCreateListings = event.getListings()
 			.stream()
-			.filter(listing -> CachedListing.shouldCreate(listing, cache.get(listing.getTicketId())))
+			.filter(listing -> CachedListing.shouldCreate(listing, cache.get(listing.getId())))
 			.collect(Collectors.toList());
 
 		Map<String, CachedListing> pendings = pendingCreateListings
 			.stream()
-			.collect(Collectors.toMap(Listing::getTicketId, CachedListing::pending));
+			.collect(Collectors.toMap(Listing::getId, CachedListing::pending));
 
 		cache.putAll(pendings);
 
@@ -127,13 +127,13 @@ public class RedissonCachedListingService implements CachedListingService {
 
 		// create
 		for (Listing listing : pendingCreateListings) {
-			log.trace("Creating {}", listing.getTicketId());
+			log.trace("Creating {}", listing.getId());
 
 			try {
-				this.listingService.createListing(listing.getTicketId(), listing.getRequest());
-				cache.put(listing.getTicketId(), CachedListing.listed(listing));
+				this.listingService.createListing(listing.getId(), listing.getRequest());
+				cache.put(listing.getId(), CachedListing.listed(listing));
 			} catch (IOException e) {
-				log.warn("Create ticket {} failed.", listing.getTicketId(), e);
+				log.warn("Create ticket {} failed.", listing.getId(), e);
 			}
 		}
 	}
@@ -149,7 +149,7 @@ public class RedissonCachedListingService implements CachedListingService {
 	}
 
 	private long ttl(Event event) {
-		return Math.max(1, Duration.between(Instant.now(), event.getEventDate()).toMinutes());
+		return Math.max(1, Duration.between(Instant.now(), event.getStartDate()).toMinutes());
 	}
 
 	@Override

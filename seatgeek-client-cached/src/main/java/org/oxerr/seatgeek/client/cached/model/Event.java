@@ -1,7 +1,7 @@
 package org.oxerr.seatgeek.client.cached.model;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,9 +12,15 @@ public class Event implements Serializable {
 
 	private static final long serialVersionUID = 2023031901L;
 
+	/**
+	 * The event identifier.
+	 */
 	private String id;
 
-	private Instant eventDate;
+	/**
+	 * The date when the event starts.
+	 */
+	private OffsetDateTime startDate;
 
 	private List<Listing> listings;
 
@@ -22,13 +28,13 @@ public class Event implements Serializable {
 		this(null, null, Collections.emptyList());
 	}
 
-	public Event(String id, Instant eventDate) {
-		this(id, eventDate, Collections.emptyList());
+	public Event(String id, OffsetDateTime startDate) {
+		this(id, startDate, Collections.emptyList());
 	}
 
-	public Event(String id, Instant eventDate, List<Listing> listings) {
+	public Event(String id, OffsetDateTime startDate, List<Listing> listings) {
 		this.id = id;
-		this.eventDate = eventDate;
+		this.startDate = startDate;
 		this.listings = listings;
 	}
 
@@ -40,12 +46,12 @@ public class Event implements Serializable {
 		this.id = id;
 	}
 
-	public Instant getEventDate() {
-		return eventDate;
+	public OffsetDateTime getStartDate() {
+		return startDate;
 	}
 
-	public void setEventDate(Instant eventDate) {
-		this.eventDate = eventDate;
+	public void setStartDate(OffsetDateTime startDate) {
+		this.startDate = startDate;
 	}
 
 	public List<Listing> getListings() {
@@ -63,17 +69,7 @@ public class Event implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (obj == this) {
-			return true;
-		}
-		if (obj.getClass() != getClass()) {
-			return false;
-		}
-		Event rhs = (Event) obj;
-		return EqualsBuilder.reflectionEquals(this, rhs);
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 }

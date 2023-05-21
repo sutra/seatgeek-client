@@ -10,24 +10,24 @@ public class Listing implements Serializable {
 
 	private static final long serialVersionUID = 2023031901L;
 
-	private String ticketId;
+	private String id;
 
 	private CreateListingRequest request;
 
 	public Listing() {
 	}
 
-	public Listing(String ticketId, CreateListingRequest request) {
-		this.ticketId = ticketId;
+	public Listing(String id, CreateListingRequest request) {
+		this.id = id;
 		this.request = request;
 	}
 
-	public String getTicketId() {
-		return ticketId;
+	public String getId() {
+		return id;
 	}
 
-	public void setTicketId(String ticketId) {
-		this.ticketId = ticketId;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public CreateListingRequest getRequest() {
@@ -45,17 +45,7 @@ public class Listing implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (obj == this) {
-			return true;
-		}
-		if (obj.getClass() != getClass()) {
-			return false;
-		}
-		Listing rhs = (Listing) obj;
-		return EqualsBuilder.reflectionEquals(this, rhs);
+		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 }
