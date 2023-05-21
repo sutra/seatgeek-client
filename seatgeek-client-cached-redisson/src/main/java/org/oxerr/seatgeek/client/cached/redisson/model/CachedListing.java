@@ -1,4 +1,4 @@
-package org.oxerr.seatgeek.client.cached.model;
+package org.oxerr.seatgeek.client.cached.redisson.model;
 
 import java.io.Serializable;
 
@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.oxerr.seatgeek.client.cached.model.Listing;
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
 
 public class CachedListing implements Serializable {

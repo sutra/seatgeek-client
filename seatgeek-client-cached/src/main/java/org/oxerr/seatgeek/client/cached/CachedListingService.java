@@ -1,7 +1,6 @@
 package org.oxerr.seatgeek.client.cached;
 
 import org.oxerr.seatgeek.client.cached.model.Event;
-import org.oxerr.seatgeek.client.cached.model.Status;
 
 public interface CachedListingService {
 
@@ -15,8 +14,9 @@ public interface CachedListingService {
 	long cacheSize();
 
 	/**
-	 * Returns the listing count which status is {@link Status#LISTED}
-	 * @return
+	 * Returns the listing count which status is LISTED.
+	 *
+	 * @return the listing count which status is LISTED.
 	 */
 	long listedCount();
 
