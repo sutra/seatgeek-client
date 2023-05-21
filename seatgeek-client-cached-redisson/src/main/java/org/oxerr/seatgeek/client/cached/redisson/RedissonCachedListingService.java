@@ -36,7 +36,7 @@ public class RedissonCachedListingService implements CachedListingService {
 	 */
 	private final String keyPrefix;
 
-	// Event ID -> <Ticket ID, CachedListing>
+	// Event ID -> <Listing ID, CachedListing>
 	private final RMapCache<String, Map<String, CachedListing>> listingsCache;
 
 	public RedissonCachedListingService(
