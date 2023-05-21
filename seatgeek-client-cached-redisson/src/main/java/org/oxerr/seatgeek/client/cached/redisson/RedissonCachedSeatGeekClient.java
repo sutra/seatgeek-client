@@ -1,7 +1,6 @@
 package org.oxerr.seatgeek.client.cached.redisson;
 
 import org.oxerr.seatgeek.client.SeatGeekClient;
-import org.oxerr.seatgeek.client.cached.CachedListingService;
 import org.oxerr.seatgeek.client.cached.CachedSeatGeekClient;
 import org.redisson.api.RedissonClient;
 
@@ -9,7 +8,7 @@ public class RedissonCachedSeatGeekClient implements CachedSeatGeekClient {
 
 	private final SeatGeekClient client;
 
-	private final CachedListingService cachedListingService;
+	private final RedissonCachedListingService cachedListingService;
 
 	public RedissonCachedSeatGeekClient(
 		SeatGeekClient seatGeekClient,
@@ -28,7 +27,7 @@ public class RedissonCachedSeatGeekClient implements CachedSeatGeekClient {
 		return this.client;
 	}
 
-	public CachedListingService getCachedListingService() {
+	public RedissonCachedListingService getCachedListingService() {
 		return this.cachedListingService;
 	}
 
