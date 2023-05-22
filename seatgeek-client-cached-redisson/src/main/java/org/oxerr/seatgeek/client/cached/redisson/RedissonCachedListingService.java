@@ -53,7 +53,7 @@ public class RedissonCachedListingService implements CachedListingService {
 	}
 
 	public RMapCache<String, Map<String, CachedListing>> getListingCache() {
-		return this.listingsCache;
+		return listingsCache;
 	}
 
 	public void updateEvent(Event event) {
