@@ -163,7 +163,7 @@ public abstract class RedissonCachedListingServiceSupport implements CachedListi
 		return countListings(this.getListingCache());
 	}
 
-	static long countListings(RMapCache<String, Map<String, CachedListing>> listingsCache) {
+	private static long countListings(RMapCache<String, Map<String, CachedListing>> listingsCache) {
 		return listingsCache.values()
 			.stream()
 			.map((Map<String, CachedListing> listings) -> listings.values().stream().filter(l -> l.getStatus() == Status.LISTED).count())
