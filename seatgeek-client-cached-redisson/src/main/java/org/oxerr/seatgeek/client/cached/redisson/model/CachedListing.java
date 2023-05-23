@@ -1,33 +1,31 @@
 package org.oxerr.seatgeek.client.cached.redisson.model;
 
-import java.io.Serializable;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.oxerr.seatgeek.client.cached.model.Listing;
+import org.oxerr.seatgeek.client.cached.model.SeatGeekListing;
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
+import org.oxerr.ticket.inventory.support.cached.redisson.Status;
 
-public class CachedListing implements Serializable {
+/**
+ * 
+ * @deprecated Use {@link SeatGeekCachedListing} instead.
+ */
+@Deprecated
+public class CachedListing extends SeatGeekCachedListing {
 
 	private static final long serialVersionUID = 2023031801L;
 
-	private Status status;
-
-	private CreateListingRequest request;
-
-	public static CachedListing pending(Listing listing) {
+	public static CachedListing pending(SeatGeekListing listing) {
 		return new CachedListing(Status.PENDING_LIST, listing.getRequest());
 	}
 
-	public static CachedListing listed(Listing listing) {
+	public static CachedListing listed(SeatGeekListing listing) {
 		return new CachedListing(Status.LISTED, listing.getRequest());
 	}
 
 	public static boolean shouldCreate(
-		@Nonnull Listing listing,
+		@Nonnull SeatGeekListing listing,
 		@Nullable  CachedListing cachedListing) {
 		return cachedListing == null
 			|| cachedListing.getStatus() == Status.PENDING_LIST
@@ -38,34 +36,7 @@ public class CachedListing implements Serializable {
 	}
 
 	public CachedListing(Status status, CreateListingRequest request) {
-		this.status = status;
-		this.request = request;
-	}
-
-	public Status getStatus() {
-		return status;
-	}
-
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-
-	public CreateListingRequest getRequest() {
-		return request;
-	}
-
-	public void setRequest(CreateListingRequest request) {
-		this.request = request;
-	}
-
-	@Override
-	public int hashCode() {
-		return HashCodeBuilder.reflectionHashCode(this);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return EqualsBuilder.reflectionEquals(this, obj);
+		super(status, request);
 	}
 
 }
