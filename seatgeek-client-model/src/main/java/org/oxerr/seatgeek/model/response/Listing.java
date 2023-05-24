@@ -2,7 +2,6 @@ package org.oxerr.seatgeek.model.response;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.oxerr.seatgeek.model.request.CreateListingRequest;
 
 public class Listing extends CreateListingRequest {
