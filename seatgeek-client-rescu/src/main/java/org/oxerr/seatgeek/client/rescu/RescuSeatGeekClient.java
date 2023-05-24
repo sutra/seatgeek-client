@@ -2,6 +2,7 @@ package org.oxerr.seatgeek.client.rescu;
 
 import javax.ws.rs.HeaderParam;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.oxerr.rescu.ext.ratelimiter.RateLimitInterceptor;
 import org.oxerr.rescu.ext.ratelimiter.RateLimiter;
 import org.oxerr.rescu.ext.singleton.RestProxyFactorySingletonImpl;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import si.mazi.rescu.ClientConfig;
 import si.mazi.rescu.IRestProxyFactory;
+import si.mazi.rescu.Interceptor;
 import si.mazi.rescu.RestProxyFactoryImpl;
 import si.mazi.rescu.serialization.jackson.DefaultJacksonObjectMapperFactory;
 import si.mazi.rescu.serialization.jackson.JacksonObjectMapperFactory;
@@ -29,15 +31,13 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 
 	private final IRestProxyFactory restProxyFactory;
 
-	private final RateLimitInterceptor rateLimitInterceptor;
-
 	private final ListingService listingService;
 
-	public RescuSeatGeekClient(String token, RateLimiter rateLimiter) {
-		this("https://sellerdirect-api.seatgeek.com", token, rateLimiter);
+	public RescuSeatGeekClient(String token, RateLimiter rateLimiter, Interceptor... interceptors) {
+		this("https://sellerdirect-api.seatgeek.com", token, rateLimiter, interceptors);
 	}
 
-	public RescuSeatGeekClient(String baseUrl, String token, RateLimiter rateLimiter) {
+	public RescuSeatGeekClient(String baseUrl, String token, RateLimiter rateLimiter, Interceptor... interceptors) {
 		this.baseUrl = baseUrl;
 
 		JacksonObjectMapperFactory jacksonObjectMapperFactory = new DefaultJacksonObjectMapperFactory() {
@@ -64,9 +64,10 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 		clientConfig.setJacksonObjectMapperFactory(jacksonObjectMapperFactory);
 
 		this.restProxyFactory = new RestProxyFactorySingletonImpl(new RestProxyFactoryImpl());
-		this.rateLimitInterceptor = new RateLimitInterceptor(rateLimiter);
+		RateLimitInterceptor rateLimitInterceptor = new RateLimitInterceptor(rateLimiter);
 
-		this.listingService = new ListingServiceImpl(createProxy(ListingResource.class));
+		Interceptor[] allInterceptors = ArrayUtils.addFirst(interceptors, rateLimitInterceptor);
+		this.listingService = new ListingServiceImpl(createProxy(ListingResource.class, allInterceptors));
 	}
 
 	@Override
@@ -74,8 +75,8 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 		return this.listingService;
 	}
 
-	protected <I> I createProxy(Class<I> restInterface) {
-		return this.restProxyFactory.createProxy(restInterface, baseUrl, this.clientConfig, this.rateLimitInterceptor);
+	protected <I> I createProxy(Class<I> restInterface, Interceptor... interceptors) {
+		return this.restProxyFactory.createProxy(restInterface, baseUrl, this.clientConfig, interceptors);
 	}
 
 }
