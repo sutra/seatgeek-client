@@ -24,6 +24,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<ticket-inventory-support.version>0.0.1-SNAPSHOT</ticket-inventory-support.version>
 	</properties>
 	<modules>
 		<module>seatgeek-client-model</module>
@@ -111,12 +112,12 @@
 			<dependency>
 				<groupId>org.oxerr.ticket.inventory.support</groupId>
 				<artifactId>ticket-inventory-support-cached</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${ticket-inventory-support.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.oxerr.ticket.inventory.support</groupId>
 				<artifactId>ticket-inventory-support-cached-redisson</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<version>${ticket-inventory-support.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.redisson</groupId>
