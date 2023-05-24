@@ -64,9 +64,10 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 		clientConfig.setJacksonObjectMapperFactory(jacksonObjectMapperFactory);
 
 		this.restProxyFactory = new RestProxyFactorySingletonImpl(new RestProxyFactoryImpl());
-		RateLimitInterceptor rateLimitInterceptor = new RateLimitInterceptor(rateLimiter);
 
+		RateLimitInterceptor rateLimitInterceptor = new RateLimitInterceptor(rateLimiter);
 		Interceptor[] allInterceptors = ArrayUtils.addFirst(interceptors, rateLimitInterceptor);
+
 		this.listingService = new ListingServiceImpl(createProxy(ListingResource.class, allInterceptors));
 	}
 
