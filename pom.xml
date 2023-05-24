@@ -18,12 +18,13 @@
 		SeatGeek Client - SeatGeek SellerDirect API Client Library for Java.
 	</description>
 	<packaging>pom</packaging>
-	<version>0.0.6</version>
+	<version>0.0.7</version>
 	<url>https://www.oxerr.org/seatgeek-client</url>
 	<inceptionYear>2023</inceptionYear>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<ticket-inventory-support.version>0.0.1</ticket-inventory-support.version>
 	</properties>
 	<modules>
 		<module>seatgeek-client-model</module>
@@ -107,6 +108,16 @@
 				<groupId>org.oxerr.rescu</groupId>
 				<artifactId>rescu-ext-rate-limiter-core</artifactId>
 				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.oxerr.ticket.inventory.support</groupId>
+				<artifactId>ticket-inventory-support-cached</artifactId>
+				<version>${ticket-inventory-support.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.oxerr.ticket.inventory.support</groupId>
+				<artifactId>ticket-inventory-support-cached-redisson</artifactId>
+				<version>${ticket-inventory-support.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.redisson</groupId>

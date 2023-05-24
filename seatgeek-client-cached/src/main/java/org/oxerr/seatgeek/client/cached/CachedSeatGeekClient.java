@@ -6,6 +6,6 @@ public interface CachedSeatGeekClient {
 
 	SeatGeekClient getClient();
 
-	CachedListingService getCachedListingService();
+	CachedSeatGeekListingService getCachedListingService();
 
 }

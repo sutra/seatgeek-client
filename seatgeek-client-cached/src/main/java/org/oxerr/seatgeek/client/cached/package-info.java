@@ -1,4 +1,4 @@
 /**
- * Client using Redisson as cache.
+ * Client using cache.
  */
 package org.oxerr.seatgeek.client.cached;

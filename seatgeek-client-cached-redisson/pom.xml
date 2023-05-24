@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.oxerr.seatgeek</groupId>
 		<artifactId>seatgeek-client</artifactId>
-		<version>0.0.6</version>
+		<version>0.0.7</version>
 	</parent>
 	<artifactId>seatgeek-client-cached-redisson</artifactId>
 	<name>SeatGeek Client - Cached - Redisson Implementation</name>
@@ -17,6 +17,10 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.oxerr.ticket.inventory.support</groupId>
+			<artifactId>ticket-inventory-support-cached-redisson</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.redisson</groupId>
