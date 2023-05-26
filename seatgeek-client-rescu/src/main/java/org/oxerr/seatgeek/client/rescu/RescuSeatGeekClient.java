@@ -3,7 +3,7 @@ package org.oxerr.seatgeek.client.rescu;
 import javax.ws.rs.HeaderParam;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.oxerr.rescu.ext.ratelimiter.RateLimitInterceptor;
+import org.oxerr.rescu.ext.ratelimiter.RateLimiterInterceptor;
 import org.oxerr.rescu.ext.ratelimiter.RateLimiter;
 import org.oxerr.rescu.ext.singleton.RestProxyFactorySingletonImpl;
 import org.oxerr.seatgeek.client.ListingService;
@@ -65,7 +65,7 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 
 		this.restProxyFactory = new RestProxyFactorySingletonImpl(new RestProxyFactoryImpl());
 
-		RateLimitInterceptor rateLimitInterceptor = new RateLimitInterceptor(rateLimiter);
+		RateLimiterInterceptor rateLimitInterceptor = new RateLimiterInterceptor(rateLimiter);
 		Interceptor[] allInterceptors = ArrayUtils.addFirst(interceptors, rateLimitInterceptor);
 
 		this.listingService = new ListingServiceImpl(createProxy(ListingResource.class, allInterceptors));
