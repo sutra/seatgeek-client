@@ -102,12 +102,12 @@
 			<dependency>
 				<groupId>org.oxerr.rescu</groupId>
 				<artifactId>rescu-ext-singleton</artifactId>
-				<version>0.0.1</version>
+				<version>0.0.8</version>
 			</dependency>
 			<dependency>
 				<groupId>org.oxerr.rescu</groupId>
 				<artifactId>rescu-ext-rate-limiter-core</artifactId>
-				<version>0.0.1</version>
+				<version>0.0.8</version>
 			</dependency>
 			<dependency>
 				<groupId>org.oxerr.ticket.inventory.support</groupId>
