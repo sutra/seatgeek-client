@@ -11,7 +11,7 @@
 		<artifactId>oxerr-parent</artifactId>
 		<version>1.6.2</version>
 	</parent>
-	<groupId>org.oxerr.seatgeek</groupId>
+	<groupId>org.oxerr.seatgeek.client</groupId>
 	<artifactId>seatgeek-client</artifactId>
 	<name>SeatGeek Client - Parent</name>
 	<description>
@@ -100,14 +100,14 @@
 				<version>5.9.3</version>
 			</dependency>
 			<dependency>
-				<groupId>org.oxerr.rescu</groupId>
+				<groupId>org.oxerr.rescu.ext</groupId>
 				<artifactId>rescu-ext-singleton</artifactId>
-				<version>0.0.8</version>
+				<version>0.0.10</version>
 			</dependency>
 			<dependency>
-				<groupId>org.oxerr.rescu</groupId>
+				<groupId>org.oxerr.rescu.ext</groupId>
 				<artifactId>rescu-ext-rate-limiter-core</artifactId>
-				<version>0.0.8</version>
+				<version>0.0.10</version>
 			</dependency>
 			<dependency>
 				<groupId>org.oxerr.ticket.inventory.support</groupId>

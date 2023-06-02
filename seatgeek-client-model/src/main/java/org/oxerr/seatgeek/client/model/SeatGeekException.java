@@ -1,4 +1,4 @@
-package org.oxerr.seatgeek.model;
+package org.oxerr.seatgeek.client.model;
 
 import java.io.IOException;
 

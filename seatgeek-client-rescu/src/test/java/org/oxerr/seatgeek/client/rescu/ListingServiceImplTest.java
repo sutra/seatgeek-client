@@ -15,13 +15,13 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.oxerr.seatgeek.client.ListingService;
 import org.oxerr.seatgeek.client.SeatGeekClient;
-import org.oxerr.seatgeek.model.SplitType;
-import org.oxerr.seatgeek.model.Token;
-import org.oxerr.seatgeek.model.TokensType;
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
-import org.oxerr.seatgeek.model.request.UpdateListingRequest;
-import org.oxerr.seatgeek.model.response.Listing;
-import org.oxerr.seatgeek.model.response.MultipleListingsResponse;
+import org.oxerr.seatgeek.client.model.SplitType;
+import org.oxerr.seatgeek.client.model.Token;
+import org.oxerr.seatgeek.client.model.TokensType;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.UpdateListingRequest;
+import org.oxerr.seatgeek.client.model.response.Listing;
+import org.oxerr.seatgeek.client.model.response.MultipleListingsResponse;
 
 class ListingServiceImplTest {
 

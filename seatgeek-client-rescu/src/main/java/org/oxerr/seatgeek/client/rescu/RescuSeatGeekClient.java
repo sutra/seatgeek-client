@@ -65,8 +65,8 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 
 		this.restProxyFactory = new RestProxyFactorySingletonImpl(new RestProxyFactoryImpl());
 
-		RateLimiterInterceptor rateLimitInterceptor = new RateLimiterInterceptor(rateLimiter);
-		Interceptor[] allInterceptors = ArrayUtils.addFirst(interceptors, rateLimitInterceptor);
+		RateLimiterInterceptor rateLimiterInterceptor = new RateLimiterInterceptor(rateLimiter);
+		Interceptor[] allInterceptors = ArrayUtils.addFirst(interceptors, rateLimiterInterceptor);
 
 		this.listingService = new ListingServiceImpl(createProxy(ListingResource.class, allInterceptors));
 	}

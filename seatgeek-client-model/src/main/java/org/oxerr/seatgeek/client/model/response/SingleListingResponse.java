@@ -1,12 +1,21 @@
-package org.oxerr.seatgeek.model.request;
+package org.oxerr.seatgeek.client.model.response;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.oxerr.seatgeek.model.AbstractListing;
 
-public class UpdateListingRequest extends AbstractListing {
+public class SingleListingResponse extends Response {
 
 	private static final long serialVersionUID = 2023031501L;
+
+	private Listing listing;
+
+	public Listing getListing() {
+		return listing;
+	}
+
+	public void setListing(Listing listing) {
+		this.listing = listing;
+	}
 
 	@Override
 	public int hashCode() {
@@ -24,7 +33,7 @@ public class UpdateListingRequest extends AbstractListing {
 		if (obj.getClass() != getClass()) {
 			return false;
 		}
-		UpdateListingRequest rhs = (UpdateListingRequest) obj;
+		SingleListingResponse rhs = (SingleListingResponse) obj;
 		return EqualsBuilder.reflectionEquals(this, rhs);
 	}
 

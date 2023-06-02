@@ -3,10 +3,10 @@ package org.oxerr.seatgeek.client;
 import java.io.IOException;
 import java.util.Optional;
 
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
-import org.oxerr.seatgeek.model.request.UpdateListingRequest;
-import org.oxerr.seatgeek.model.response.Listing;
-import org.oxerr.seatgeek.model.response.MultipleListingsResponse;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.UpdateListingRequest;
+import org.oxerr.seatgeek.client.model.response.Listing;
+import org.oxerr.seatgeek.client.model.response.MultipleListingsResponse;
 
 public interface ListingService {
 

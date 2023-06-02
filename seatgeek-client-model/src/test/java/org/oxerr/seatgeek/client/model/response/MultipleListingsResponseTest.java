@@ -1,4 +1,4 @@
-package org.oxerr.seatgeek.model.request;
+package org.oxerr.seatgeek.client.model.response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,8 +11,7 @@ import java.time.LocalTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import org.oxerr.seatgeek.model.SplitType;
-import org.oxerr.seatgeek.model.TokensType;
+import org.oxerr.seatgeek.client.model.SplitType;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
@@ -22,7 +21,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-class CreateListingRequestTest {
+class MultipleListingsResponseTest {
 
 	private final Logger log = LogManager.getLogger();
 
@@ -36,33 +35,32 @@ class CreateListingRequestTest {
 
 	@Test
 	void testReadWrite() throws StreamReadException, DatabindException, IOException {
-		try (InputStream inputStream = this.getClass().getResourceAsStream("create-listing.json");) {
-			CreateListingRequest listing = objectMapper.readValue(inputStream, CreateListingRequest.class);
+		try (InputStream inputStream = this.getClass().getResourceAsStream("multiple-listings.json");) {
+			MultipleListingsResponse multipleListingsResponse = objectMapper.readValue(inputStream, MultipleListingsResponse.class);
+			Listing listing = multipleListingsResponse.getListings().get(0);
+			assertEquals("abc123", listing.getTicketId());
+			assertEquals(5660418, listing.getEventId());
 			assertEquals("Justin Timberlake", listing.getEvent());
 			assertEquals("Madison Square Garden", listing.getVenue());
 			assertEquals(LocalDate.of(2018, 3, 21), listing.getEventDate());
 			assertEquals(LocalTime.of(20, 0, 0), listing.getEventTime());
-			assertEquals(3, listing.getQuantity().intValue());
-			assertEquals(new BigDecimal("150.99"), listing.getCost());
+			assertEquals(2, listing.getQuantity().intValue());
+			assertEquals(new BigDecimal("275.99"), listing.getCost());
 			assertEquals("110", listing.getSection());
 			assertEquals("10", listing.getRow());
 			assertEquals(1, listing.getSeatFrom());
-			assertEquals(3, listing.getSeatThru());
+			assertEquals(2, listing.getSeatThru());
 			assertEquals("Some notes", listing.getNotes());
-			assertEquals(LocalDate.of(2018, 1, 1), listing.getInHandDate());
+			assertEquals(LocalDate.of(2018, 3, 14), listing.getInHandDate());
 			assertEquals(Boolean.TRUE, listing.getEdelivery());
 			assertEquals(Boolean.TRUE, listing.getInstant());
-			assertEquals(SplitType.CUSTOM, listing.getSplitType());
-			assertEquals("1,2,3", listing.getSplits());
-			assertEquals(new BigDecimal("0.50"), listing.getSellerPreviouslyPaidPricePerTicket());
-			assertEquals("mobile", listing.getStockType());
-			assertEquals(TokensType.BARCODE, listing.getTokensType());
-			assertEquals(1, listing.getTokens().get(0).getSeat().intValue());
-			assertEquals("abc123", listing.getTokens().get(0).getToken());
-			assertEquals(2, listing.getTokens().get(1).getSeat().intValue());
-			assertEquals("def456", listing.getTokens().get(1).getToken());
-			assertEquals(3, listing.getTokens().get(2).getSeat().intValue());
-			assertEquals("ghi789", listing.getTokens().get(2).getToken());
+			assertEquals(SplitType.DONTLEAVEONE, listing.getSplitType());
+			assertEquals("2", listing.getSplits());
+			assertEquals(new BigDecimal("1.40"), listing.getSellerPreviouslyPaidPricePerTicket());
+			assertEquals(2, listing.getBarcodes().get(0).getSeat().intValue());
+			assertEquals("abc123", listing.getBarcodes().get(0).getBarcode());
+			assertEquals(3, listing.getBarcodes().get(1).getSeat().intValue());
+			assertEquals("def456", listing.getBarcodes().get(1).getBarcode());
 
 			String json = objectMapper.writeValueAsString(listing);
 			log.info("json: {}", json);

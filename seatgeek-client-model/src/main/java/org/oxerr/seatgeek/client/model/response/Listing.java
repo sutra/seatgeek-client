@@ -1,8 +1,8 @@
-package org.oxerr.seatgeek.model.response;
+package org.oxerr.seatgeek.client.model.response;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 
 public class Listing extends CreateListingRequest {
 

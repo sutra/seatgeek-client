@@ -9,12 +9,12 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.oxerr.seatgeek.client.ListingService;
-import org.oxerr.seatgeek.model.SeatGeekException;
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
-import org.oxerr.seatgeek.model.request.UpdateListingRequest;
-import org.oxerr.seatgeek.model.response.Listing;
-import org.oxerr.seatgeek.model.response.MultipleListingsResponse;
-import org.oxerr.seatgeek.model.response.Response;
+import org.oxerr.seatgeek.client.model.SeatGeekException;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.UpdateListingRequest;
+import org.oxerr.seatgeek.client.model.response.Listing;
+import org.oxerr.seatgeek.client.model.response.MultipleListingsResponse;
+import org.oxerr.seatgeek.client.model.response.Response;
 
 import si.mazi.rescu.HttpStatusIOException;
 
