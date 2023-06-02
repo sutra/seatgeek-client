@@ -18,7 +18,7 @@
 		SeatGeek Client - SeatGeek SellerDirect API Client Library for Java.
 	</description>
 	<packaging>pom</packaging>
-	<version>0.0.9</version>
+	<version>0.0.10</version>
 	<url>https://www.oxerr.org/seatgeek-client</url>
 	<inceptionYear>2023</inceptionYear>
 	<properties>
@@ -158,4 +158,10 @@
 		<system>GitHub</system>
 		<url>https://github.com/sutra/seatgeek-client/issues</url>
 	</issueManagement>
+	<distributionManagement>
+		<site>
+			<id>oxerr.org</id>
+			<url>scp://oxerr.org/usr/local/www/seatgeek-client/</url>
+		</site>
+	</distributionManagement>
 </project>
