@@ -4,7 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
 
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 import org.oxerr.ticket.inventory.support.Event;
 
 public class SeatGeekEvent extends Event<CreateListingRequest, SeatGeekListing> {

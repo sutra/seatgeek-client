@@ -1,6 +1,6 @@
 package org.oxerr.seatgeek.client.cached.model;
 
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 import org.oxerr.ticket.inventory.support.Listing;
 
 public class SeatGeekListing extends Listing<CreateListingRequest> {

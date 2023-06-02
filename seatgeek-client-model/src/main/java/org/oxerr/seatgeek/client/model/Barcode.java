@@ -1,25 +1,17 @@
-package org.oxerr.seatgeek.model;
+package org.oxerr.seatgeek.client.model;
 
 import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class Token implements Serializable {
+public class Barcode implements Serializable {
 
 	private static final long serialVersionUID = 20230314L;
 
 	private Integer seat;
 
-	private String token;
-
-	public Token() {
-	}
-
-	public Token(Integer seat, String token) {
-		this.seat = seat;
-		this.token = token;
-	}
+	private String barcode;
 
 	public Integer getSeat() {
 		return seat;
@@ -29,12 +21,12 @@ public class Token implements Serializable {
 		this.seat = seat;
 	}
 
-	public String getToken() {
-		return token;
+	public String getBarcode() {
+		return barcode;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
 	}
 
 	@Override
@@ -53,7 +45,7 @@ public class Token implements Serializable {
 		if (obj.getClass() != getClass()) {
 			return false;
 		}
-		Token rhs = (Token) obj;
+		Barcode rhs = (Barcode) obj;
 		return EqualsBuilder.reflectionEquals(this, rhs);
 	}
 

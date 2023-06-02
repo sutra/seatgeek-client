@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.oxerr.seatgeek.client.cached.model.SeatGeekListing;
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 import org.oxerr.ticket.inventory.support.cached.redisson.Status;
 
 /**

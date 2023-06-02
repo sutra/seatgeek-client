@@ -1,4 +1,4 @@
-package org.oxerr.seatgeek.model;
+package org.oxerr.seatgeek.client.model;
 
 public enum SplitType {
 

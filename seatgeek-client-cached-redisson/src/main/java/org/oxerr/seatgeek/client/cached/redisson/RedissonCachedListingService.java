@@ -7,7 +7,7 @@ import org.oxerr.seatgeek.client.cached.CachedSeatGeekListingService;
 import org.oxerr.seatgeek.client.cached.model.SeatGeekEvent;
 import org.oxerr.seatgeek.client.cached.model.SeatGeekListing;
 import org.oxerr.seatgeek.client.cached.redisson.model.SeatGeekCachedListing;
-import org.oxerr.seatgeek.model.request.CreateListingRequest;
+import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 import org.oxerr.ticket.inventory.support.cached.redisson.RedissonCachedListingServiceSupport;
 import org.oxerr.ticket.inventory.support.cached.redisson.Status;
 import org.redisson.api.RedissonClient;

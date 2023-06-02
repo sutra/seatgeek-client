@@ -1,23 +1,12 @@
-package org.oxerr.seatgeek.model.response;
-
-import java.io.Serializable;
+package org.oxerr.seatgeek.client.model.request;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.oxerr.seatgeek.client.model.AbstractListing;
 
-public class Error implements Serializable {
+public class UpdateListingRequest extends AbstractListing {
 
-	private static final long serialVersionUID = 2023031701L;
-
-	private String message;
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
+	private static final long serialVersionUID = 2023031501L;
 
 	@Override
 	public int hashCode() {
@@ -35,7 +24,7 @@ public class Error implements Serializable {
 		if (obj.getClass() != getClass()) {
 			return false;
 		}
-		Error rhs = (Error) obj;
+		UpdateListingRequest rhs = (UpdateListingRequest) obj;
 		return EqualsBuilder.reflectionEquals(this, rhs);
 	}
 

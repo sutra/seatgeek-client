@@ -1,4 +1,4 @@
-package org.oxerr.seatgeek.model.request;
+package org.oxerr.seatgeek.client.model.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.oxerr.seatgeek.model.AbstractListing;
+import org.oxerr.seatgeek.client.model.AbstractListing;
 
 public class CreateListingRequest extends AbstractListing {
 
