@@ -18,8 +18,13 @@ public class RedissonCachedListingService
 
 	private final ListingService listingService;
 
-	public RedissonCachedListingService(ListingService listingService, RedissonClient redisson, String keyPrefix) {
-		super(redisson, keyPrefix);
+	public RedissonCachedListingService(
+		ListingService listingService,
+		RedissonClient redissonClient,
+		String keyPrefix,
+		boolean create
+	) {
+		super(redissonClient, keyPrefix, create);
 		this.listingService = listingService;
 	}
 
