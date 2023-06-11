@@ -24,7 +24,7 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<ticket-inventory-support.version>0.0.1</ticket-inventory-support.version>
+		<ticket-inventory-support.version>0.0.2</ticket-inventory-support.version>
 	</properties>
 	<modules>
 		<module>seatgeek-client-model</module>

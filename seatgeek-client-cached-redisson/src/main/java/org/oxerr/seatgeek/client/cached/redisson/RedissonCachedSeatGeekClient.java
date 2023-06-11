@@ -15,11 +15,21 @@ public class RedissonCachedSeatGeekClient implements CachedSeatGeekClient {
 		RedissonClient redissonClient,
 		String keyPrefix
 	) {
+		this(seatGeekClient, redissonClient, keyPrefix, true);
+	}
+
+	public RedissonCachedSeatGeekClient(
+		SeatGeekClient seatGeekClient,
+		RedissonClient redissonClient,
+		String keyPrefix,
+		boolean create
+	) {
 		this.client = seatGeekClient;
 		this.cachedListingService = new RedissonCachedListingService(
 			seatGeekClient.getListingService(),
 			redissonClient,
-			keyPrefix
+			keyPrefix,
+			create
 		);
 	}
 
