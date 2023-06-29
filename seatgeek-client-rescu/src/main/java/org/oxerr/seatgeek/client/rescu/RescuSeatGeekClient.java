@@ -1,6 +1,6 @@
 package org.oxerr.seatgeek.client.rescu;
 
-import javax.ws.rs.HeaderParam;
+import jakarta.ws.rs.HeaderParam;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.oxerr.rescu.ext.ratelimiter.RateLimiterInterceptor;
