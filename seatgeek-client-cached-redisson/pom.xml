@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.oxerr.seatgeek.client</groupId>
 		<artifactId>seatgeek-client</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>seatgeek-client-cached-redisson</artifactId>
 	<name>SeatGeek Client - Cached - Redisson Implementation</name>
