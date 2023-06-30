@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.oxerr.seatgeek.client</groupId>
 		<artifactId>seatgeek-client</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>seatgeek-client-coverage</artifactId>
 	<name>SeatGeek Client - Coverage</name>
