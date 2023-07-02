@@ -7,7 +7,7 @@ import java.util.List;
 import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 import org.oxerr.ticket.inventory.support.Event;
 
-public class SeatGeekEvent extends Event<CreateListingRequest, SeatGeekListing> {
+public class SeatGeekEvent extends Event<String, String, CreateListingRequest, SeatGeekListing> {
 
 	private static final long serialVersionUID = 2023031901L;
 

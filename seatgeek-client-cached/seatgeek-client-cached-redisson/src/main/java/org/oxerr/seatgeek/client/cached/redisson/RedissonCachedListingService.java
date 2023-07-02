@@ -13,7 +13,7 @@ import org.oxerr.ticket.inventory.support.cached.redisson.Status;
 import org.redisson.api.RedissonClient;
 
 public class RedissonCachedListingService
-	extends RedissonCachedListingServiceSupport<CreateListingRequest, SeatGeekListing, SeatGeekEvent, SeatGeekCachedListing>
+	extends RedissonCachedListingServiceSupport<String, String, CreateListingRequest, SeatGeekListing, SeatGeekEvent, SeatGeekCachedListing>
 	implements CachedSeatGeekListingService {
 
 	private final ListingService listingService;
@@ -28,11 +28,11 @@ public class RedissonCachedListingService
 		this.listingService = listingService;
 	}
 
-	protected void doDelete(String ticketId) throws IOException {
+	protected void deleteListing(SeatGeekEvent event, String ticketId) throws IOException {
 		this.listingService.deleteListing(ticketId);
 	}
 
-	protected void doCreate(SeatGeekEvent event, SeatGeekListing listing) throws IOException {
+	protected void createListing(SeatGeekEvent event, SeatGeekListing listing) throws IOException {
 		this.listingService.createListing(listing.getId(), listing.getRequest());
 	}
 
