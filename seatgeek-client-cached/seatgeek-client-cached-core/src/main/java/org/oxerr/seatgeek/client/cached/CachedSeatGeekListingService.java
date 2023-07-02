@@ -6,5 +6,5 @@ import org.oxerr.seatgeek.client.model.request.CreateListingRequest;
 import org.oxerr.ticket.inventory.support.cached.CachedListingService;
 
 public interface CachedSeatGeekListingService
-	extends CachedListingService<CreateListingRequest, SeatGeekListing, SeatGeekEvent> {
+	extends CachedListingService<String, String, CreateListingRequest, SeatGeekListing, SeatGeekEvent> {
 }
