@@ -27,7 +27,7 @@ class ListingServiceImplTest {
 
 	private final Logger log = LogManager.getLogger();
 
-	private final SeatGeekClient client = RescuSeatGeekClientTest.getClient();
+	private final SeatGeekClient client = ResCUSeatGeekClientTest.getClient();
 
 	private final ListingService listingService = client.getListingService();
 

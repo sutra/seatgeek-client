@@ -11,14 +11,14 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.oxerr.rescu.ext.ratelimiter.RateLimiter;
 
-public class RescuSeatGeekClientTest {
+public class ResCUSeatGeekClientTest {
 
 	private static final Logger LOG = LogManager.getLogger();
 
-	public static RescuSeatGeekClient getClient() {
+	public static ResCUSeatGeekClient getClient() {
 		Properties props = new Properties();
 		String name = "/seatgeek.properties";
-		try (InputStream in = RescuSeatGeekClientTest.class.getResourceAsStream(name)) {
+		try (InputStream in = ResCUSeatGeekClientTest.class.getResourceAsStream(name)) {
 			if (in != null) {
 				props.load(in);
 			} else {
@@ -38,12 +38,12 @@ public class RescuSeatGeekClientTest {
 
 		};
 
-		return new RescuSeatGeekClient(token, rateLimiter);
+		return new ResCUSeatGeekClient(token, rateLimiter);
 	}
 
 	@Test
 	void testGetClient() {
-		assertNotNull(RescuSeatGeekClientTest.getClient());
+		assertNotNull(ResCUSeatGeekClientTest.getClient());
 	}
 
 }

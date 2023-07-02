@@ -23,7 +23,7 @@ import si.mazi.rescu.RestProxyFactoryImpl;
 import si.mazi.rescu.serialization.jackson.DefaultJacksonObjectMapperFactory;
 import si.mazi.rescu.serialization.jackson.JacksonObjectMapperFactory;
 
-public class RescuSeatGeekClient implements SeatGeekClient {
+public class ResCUSeatGeekClient implements SeatGeekClient {
 
 	private final String baseUrl;
 
@@ -33,11 +33,11 @@ public class RescuSeatGeekClient implements SeatGeekClient {
 
 	private final ListingService listingService;
 
-	public RescuSeatGeekClient(String token, RateLimiter rateLimiter, Interceptor... interceptors) {
+	public ResCUSeatGeekClient(String token, RateLimiter rateLimiter, Interceptor... interceptors) {
 		this("https://sellerdirect-api.seatgeek.com", token, rateLimiter, interceptors);
 	}
 
-	public RescuSeatGeekClient(String baseUrl, String token, RateLimiter rateLimiter, Interceptor... interceptors) {
+	public ResCUSeatGeekClient(String baseUrl, String token, RateLimiter rateLimiter, Interceptor... interceptors) {
 		this.baseUrl = baseUrl;
 
 		JacksonObjectMapperFactory jacksonObjectMapperFactory = new DefaultJacksonObjectMapperFactory() {
