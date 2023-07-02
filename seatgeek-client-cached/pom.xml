@@ -9,23 +9,14 @@
 	<parent>
 		<groupId>org.oxerr.seatgeek.client</groupId>
 		<artifactId>seatgeek-client</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 	</parent>
+	<groupId>org.oxerr.seatgeek.client.cached</groupId>
 	<artifactId>seatgeek-client-cached</artifactId>
 	<name>SeatGeek Client - Cached</name>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.oxerr.ticket.inventory.support</groupId>
-			<artifactId>ticket-inventory-support-cached</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>seatgeek-client-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
+	<packaging>pom</packaging>
+	<modules>
+		<module>seatgeek-client-cached-core</module>
+		<module>seatgeek-client-cached-redisson</module>
+	</modules>
 </project>

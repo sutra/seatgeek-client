@@ -18,20 +18,19 @@
 		SeatGeek Client - SeatGeek SellerDirect API Client Library for Java.
 	</description>
 	<packaging>pom</packaging>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<url>https://www.oxerr.org/seatgeek-client</url>
 	<inceptionYear>2023</inceptionYear>
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<log4j.version>2.20.0</log4j.version>
-		<ticket-inventory-support.version>0.0.2</ticket-inventory-support.version>
+		<ticket-inventory-support.version>0.0.5</ticket-inventory-support.version>
 	</properties>
 	<modules>
 		<module>seatgeek-client-model</module>
 		<module>seatgeek-client-core</module>
 		<module>seatgeek-client-cached</module>
-		<module>seatgeek-client-cached-redisson</module>
 		<module>seatgeek-client-rescu</module>
 		<module>seatgeek-client-coverage</module>
 	</modules>
@@ -111,12 +110,12 @@
 				<version>0.0.11</version>
 			</dependency>
 			<dependency>
-				<groupId>org.oxerr.ticket.inventory.support</groupId>
-				<artifactId>ticket-inventory-support-cached</artifactId>
+				<groupId>org.oxerr.ticket.inventory.support.cached</groupId>
+				<artifactId>ticket-inventory-support-cached-core</artifactId>
 				<version>${ticket-inventory-support.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.oxerr.ticket.inventory.support</groupId>
+				<groupId>org.oxerr.ticket.inventory.support.cached</groupId>
 				<artifactId>ticket-inventory-support-cached-redisson</artifactId>
 				<version>${ticket-inventory-support.version}</version>
 			</dependency>

@@ -7,9 +7,9 @@
 		https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.oxerr.seatgeek.client</groupId>
-		<artifactId>seatgeek-client</artifactId>
-		<version>1.0.0</version>
+		<groupId>org.oxerr.seatgeek.client.cached</groupId>
+		<artifactId>seatgeek-client-cached</artifactId>
+		<version>1.0.1</version>
 	</parent>
 	<artifactId>seatgeek-client-cached-redisson</artifactId>
 	<name>SeatGeek Client - Cached - Redisson Implementation</name>
@@ -19,7 +19,7 @@
 			<artifactId>log4j-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.oxerr.ticket.inventory.support</groupId>
+			<groupId>org.oxerr.ticket.inventory.support.cached</groupId>
 			<artifactId>ticket-inventory-support-cached-redisson</artifactId>
 		</dependency>
 		<dependency>
@@ -27,13 +27,13 @@
 			<artifactId>redisson</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>seatgeek-client-cached</artifactId>
+			<groupId>org.oxerr.seatgeek.client</groupId>
+			<artifactId>seatgeek-client-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>seatgeek-client-core</artifactId>
+			<artifactId>seatgeek-client-cached-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
