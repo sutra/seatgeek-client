@@ -1,6 +1,8 @@
 package org.oxerr.seatgeek.client.cached.redisson;
 
 import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ForkJoinPool;
 
 import org.oxerr.seatgeek.client.ListingService;
 import org.oxerr.seatgeek.client.cached.CachedSeatGeekListingService;
@@ -24,7 +26,17 @@ public class RedissonCachedListingService
 		String keyPrefix,
 		boolean create
 	) {
-		super(redissonClient, keyPrefix, create);
+		this(listingService, redissonClient, keyPrefix, ForkJoinPool.commonPool(), create);
+	}
+
+	public RedissonCachedListingService(
+		ListingService listingService,
+		RedissonClient redissonClient,
+		String keyPrefix,
+		Executor executor,
+		boolean create
+	) {
+		super(redissonClient, keyPrefix, executor, create);
 		this.listingService = listingService;
 	}
 
